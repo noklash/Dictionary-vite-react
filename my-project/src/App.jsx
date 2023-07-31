@@ -7,30 +7,51 @@ import { Form } from './Form'
 
 function App() {
   // const [count, setCount] = useState(0)
-  const [word, setWord] = useState("")
+  const [word, setWord] = useState("a")
   const [post, setPost] = useState([])
-  const [error, setError] = useState(null)
+  const [err, setErr] = useState(null)
   const [show, setShow] = useState(false)
   // const [input, setInput] = useState({"searchT": ""})
 
 
   useEffect(()=>{
+    const getWords = () => {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-      .then(res => 
-        res.json().then((data) =>{
+      .then(res => {
+        if (res.status >= 400){
+          throw new Error("SERVER RESPONDS WITH ERROR!")
+        }
+        return res.json()
+      }) 
+      .then((data) =>{
         console.log(data)
         setPost(data)
-      })
-      )  
+        setShow(true)
+      },
+          err => {
+            setErr(err)
+            setShow(true)
+          })
+        }
+        getWords()
+        
+       
   }, [word])
 
-return(
-  <div>
-    <Form word={word} setWord={setWord} />
-    {/* <Output post={post}/> */}
+  if (err) {
+    return <div>{err.message}</div>
+  } else if (!show){
+    return <div>showing...</div>
+  } else{
+    return(
+      <div>
+        <Form word={word} setWord={setWord} />
+        <Output post={post}/>
+    
+      </div>
+    )
+  }
 
-  </div>
-)
 
 }
 
