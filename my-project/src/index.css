@@ -47,8 +47,39 @@
       background-color: #1f2023;
       color: #dadada;
     }
+    /* #root > .btn{
+        color: #dadada;
+    } */
   }
 
   #root{
     min-height: 100vh;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(2, 37, 51);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  @media(min-width:575px ){
+    
+    .form_input{
+        width: 20rem;
+        margin-right: 3rem;
+    }
+    .form{
+        width: 100%;
+        justify-content: center;
+
+    }
+    /* .output{
+        width: 100%;
+        justify-content: center;
+    } */
   }

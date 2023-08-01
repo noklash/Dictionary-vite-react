@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-export const Form = ({ word, setWord, isDark}) => {
+export const Form = ({ word, setWord}) => {
 
     const inputRef = useRef()
 
@@ -25,9 +25,9 @@ export const Form = ({ word, setWord, isDark}) => {
         //   value={word}
         //   onChange={handleChange}
           placeholder="Enter word"
-          className={isDark ? 'border-solid border-2 border-white form_input mr-auto text-black ' : 'form_input mr-auto text-black border-solid border-2 border-black'}
+          className='border-solid border-2 border-sky-800 form_input mr-auto text-black ' 
         />
-        <button onClick={handleSubmit} className={isDark ? 'btn border-solid border-2 border-white ' : 'btn border-solid border-2 border-sky-800 bg-sky-800'}>search</button>
+        <button onClick={handleSubmit} className='btn border-solid border-2 text-white border-sky-800 bg-sky-800'>search</button>
       </form>
   )
 }

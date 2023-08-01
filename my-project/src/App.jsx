@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import Output from './Output'
-// import Toggle from "react-toggle"
+
 
 import './App.css'
 import { Form } from './Form'
+
+
+
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -14,9 +17,10 @@ function App() {
   const [isDark, setIsDark] = useState(false)
   // const [input, setInput] = useState({"searchT": ""})
 
-function handleMode(){
-  setIsDark(prev => !prev)
-}
+// function handleMode(){
+//   setIsDark(prev => !prev)
+// }
+
 
 
   useEffect(()=>{
@@ -24,7 +28,7 @@ function handleMode(){
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(res => {
         if (res.status >= 400){
-          throw new Error("SERVER RESPONDS WITH ERROR!")
+          throw new Error("ERROR WORD NOT FOUND")
         }
         return res.json()
       }) 
@@ -46,24 +50,21 @@ function handleMode(){
   if (err) {
     return <div>{err.message}</div>
   } else if (!show){
-    return <div>showing...</div>
+    return <div>Loading...</div>
   } else{
     return(
-      <div className={isDark ? "bg-black text-white" : ""}>
-        <Form word={word} setWord={setWord} isDark={isDark}/>
-{/* new below */}
 
-      {/* <Toggle
-            checked={isDark}
-            onChange={({ target }) => setIsDark(target.checked)}
-            icons={{ checked: "🌙", unchecked: "🔆" }}
-            aria-label="Dark mode toggle"
-          /> */}
-        
-        {/* new */}
-        <Output post={post}/>
-    
-      </div>
+      
+      <div className={isDark ? "bg-black text-white" : ""}>
+        <div className='mb-auto pb-12'>
+          <Form word={word} setWord={setWord} isDark={isDark}/>
+          <Output post={post}/>
+        </div>
+        <footer className='footer'>
+          &copy; 2023 Noklashn. All rights reserved
+        </footer>
+    </div> 
+     
     )
   }
 
