@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form{
+    margin-bottom: 1.2rem;
+}
+
+.form_input{
+    /* border: 2px ; */
+    padding: .4rem;
+    text-indent: 3rem;
+}
+
+.btn{
+    /* border: 2px solid black; */
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.title{
+    font-size: 2.5rem;
+}
+.part_os{
+    font-size: 1.2rem;
+}
+.part{
+    font-weight: 600;
+}
+
+.transcription{
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.output{
+    text-align: left;
+}
+
+
+
+/* new test */
+
+@media (prefers-color-scheme: dark) {
+    #root{
+      background-color: #1f2023;
+      color: #dadada;
+    }
+  }
+
+  #root{
+    min-height: 100vh;
+  }

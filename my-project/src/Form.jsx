@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-export const Form = ({ word, setWord}) => {
+export const Form = ({ word, setWord, isDark}) => {
 
     const inputRef = useRef()
 
@@ -17,17 +17,17 @@ export const Form = ({ word, setWord}) => {
       }
 
   return (
-    <form>
+    <form className='form flex mx-7 pt-6'>
         <input
           ref={inputRef}
           name='searchT'
           type='text'
         //   value={word}
         //   onChange={handleChange}
-          placeholder="Search for word"
-          className='form_input'
+          placeholder="Enter word"
+          className={isDark ? 'border-solid border-2 border-white form_input mr-auto text-black ' : 'form_input mr-auto text-black border-solid border-2 border-black'}
         />
-        <button onClick={handleSubmit}>search</button>
+        <button onClick={handleSubmit} className={isDark ? 'btn border-solid border-2 border-white ' : 'btn border-solid border-2 border-sky-800 bg-sky-800'}>search</button>
       </form>
   )
 }

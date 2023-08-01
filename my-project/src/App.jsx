@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Output from './Output'
-import {BrowserRouter, Routes, Route } from "react-router-dom"
+// import Toggle from "react-toggle"
 
 import './App.css'
 import { Form } from './Form'
@@ -11,7 +11,12 @@ function App() {
   const [post, setPost] = useState([])
   const [err, setErr] = useState(null)
   const [show, setShow] = useState(false)
+  const [isDark, setIsDark] = useState(false)
   // const [input, setInput] = useState({"searchT": ""})
+
+function handleMode(){
+  setIsDark(prev => !prev)
+}
 
 
   useEffect(()=>{
@@ -44,8 +49,18 @@ function App() {
     return <div>showing...</div>
   } else{
     return(
-      <div>
-        <Form word={word} setWord={setWord} />
+      <div className={isDark ? "bg-black text-white" : ""}>
+        <Form word={word} setWord={setWord} isDark={isDark}/>
+{/* new below */}
+
+      {/* <Toggle
+            checked={isDark}
+            onChange={({ target }) => setIsDark(target.checked)}
+            icons={{ checked: "🌙", unchecked: "🔆" }}
+            aria-label="Dark mode toggle"
+          /> */}
+        
+        {/* new */}
         <Output post={post}/>
     
       </div>
