@@ -10,7 +10,7 @@ import { Form } from './Form'
 
 function App() {
   // const [count, setCount] = useState(0)
-  const [word, setWord] = useState("a")
+  const [word, setWord] = useState("")
   const [post, setPost] = useState([])
   const [err, setErr] = useState(null)
   const [show, setShow] = useState(false)
@@ -25,10 +25,10 @@ function App() {
 
   useEffect(()=>{
     const getWords = () => {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      word !== "" && fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(res => {
         if (res.status >= 400){
-          throw new Error("ERROR WORD NOT FOUND")
+          throw new Error("ERROR WORD NOT FOUND PLEASE REFRESH PAGE") 
         }
         return res.json()
       }) 
@@ -49,8 +49,8 @@ function App() {
 
   if (err) {
     return <div>{err.message}</div>
-  } else if (!show){
-    return <div>Loading...</div>
+  // } else if (!show){
+  //   return <div>Loading...</div>
   } else{
     return(
 
@@ -58,7 +58,10 @@ function App() {
       <div className={isDark ? "bg-black text-white" : ""}>
         <div className='mb-auto pb-12'>
           <Form word={word} setWord={setWord} isDark={isDark}/>
-          <Output post={post}/>
+          {show && <Output post={post}/>}
+        
+          {/* since show is only true when there is a fetch  */}
+          {!show && <h2 className='text-center'>BLANK SPACE PLACE ADVERT LOL </h2>}
         </div>
         <footer className='footer'>
           &copy; 2023 Noklashn. All rights reserved

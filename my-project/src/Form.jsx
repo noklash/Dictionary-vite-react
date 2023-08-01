@@ -13,6 +13,7 @@ export const Form = ({ word, setWord}) => {
         // setWord(e.target.value)
         const wordie = inputRef.current.value;
         setWord(wordie)
+        console.log(wordie)
         
       }
 
