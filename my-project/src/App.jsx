@@ -15,15 +15,32 @@ function App() {
   const [err, setErr] = useState(null)
   const [show, setShow] = useState(false)
   const [isDark, setIsDark] = useState(false)
-  // const [input, setInput] = useState({"searchT": ""})
+  const [isLoading, setIsloading] = useState(true)
 
 // function handleMode(){
 //   setIsDark(prev => !prev)
 // }
 
+// testing starts
+  useEffect(() => {
+    setTimeout(() => {
+    setIsloading(false)
+    }, 5000)
+  }, [])
+
+  // if (isLoading) {
+  //   return <div className='loading text-center justify-center'>NOKLASH DICTIONARY</div>
+  // }
+
+  // testing stops here
 
 
   useEffect(()=>{
+    // setTimeout(() => {
+    //   setIsloading(false)
+    //   }, 5000)
+
+
     const getWords = () => {
       word !== "" && fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(res => {
@@ -55,14 +72,18 @@ function App() {
     return(
 
       
-      <div className={isDark ? "bg-black text-white" : ""}>
-        <div className='mb-auto pb-12'>
+      <div className="ten">
+        {isLoading && <div className='loading '>
+                <h1 className='flicker'>Checkam <span className='tm'>&#8482;</span></h1>
+        </div>}
+        {/* new up */}
+        {!isLoading && <div className='mb-auto pb-12'>
           <Form word={word} setWord={setWord} isDark={isDark}/>
           {show && <Output post={post}/>}
         
           {/* since show is only true when there is a fetch  */}
           {!show && <h2 className='text-center'>BLANK SPACE PLACE ADVERT LOL </h2>}
-        </div>
+        </div>}
         <footer className='footer'>
           &copy; 2023 Noklashn. All rights reserved
         </footer>

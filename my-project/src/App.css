@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,3 +6,51 @@
   text-align: center;
 } */
 
+.loading{
+  /* padding: 25%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* height: 100%; */
+  overflow-y: hidden;
+  
+  width: 100%;
+  
+  font-weight: 700;
+  font-size: 3rem;
+  background-color:  rgb(2, 37, 51);
+
+  
+}
+
+.flicker {
+  
+  font-size: 4rem;
+  font-family: 'play', sans-serif;
+  /* margin: 1rem auto; */
+   color: #fffefe61;;
+
+
+  background: -webkit-gradient(linear, left top, right top, from(#e6e6e6), to(#1d1c1c), color-stop(0.8, #ffffff)) no-repeat;
+  background: gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.8, #fff)) no-repeat;
+  background-size: 110px 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: flick 1.5s infinite;
+}
+@keyframes flick {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+.tm{
+  font-size: 1.5rem;
+  margin-left: -1.2rem;
+  margin-top: -5rem;
+  display: none;
+}
